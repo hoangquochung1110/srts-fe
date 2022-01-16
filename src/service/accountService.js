@@ -16,6 +16,7 @@ async function login(){
 
 function logout(){
     window.FB.logout();
+    localStorage.removeItem('authToken');
 }
 
 async function apiAuthenticate(accessToken){
