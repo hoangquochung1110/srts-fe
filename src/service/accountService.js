@@ -16,24 +16,27 @@ async function login(){
 
 function logout(){
     window.FB.logout();
+    localStorage.removeItem('authToken');
 }
 
 async function apiAuthenticate(accessToken){
     const data = {'access_token': accessToken};
-    const response = await fetch(
-                                process.env.REACT_APP_BACKEND_URL+'dj-rest-auth/facebook/', 
-                                
-                                {   
-                                    headers: {
-                                        'Accept': 'application/json',
-                                        'Content-Type': 'application/json'
-                                    },
-                                    method: 'POST',
-                                    body: JSON.stringify(data)
-                                }
-                            );
-    const jsonRes = await response.json();
-    localStorage.setItem('authToken', jsonRes.key);
+    try{
+        const response = await fetch(
+            process.env.REACT_APP_BACKEND_URL+'dj-rest-auth/facebook/', 
+            {   
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                method: 'POST',
+                body: JSON.stringify(data)
+            });
+        const jsonRes = await response.json();
+        localStorage.setItem('authToken', jsonRes.key);
+    } catch(err){
+        console.log(err);
+    }
 }
 
 function getAuthResponse(){

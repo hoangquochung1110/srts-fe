@@ -39,7 +39,7 @@ const AuthStatus = () => {
     fetch(
       process.env.REACT_APP_BACKEND_URL+'dj-rest-auth/user/', {
       headers: {
-          'Authorization': 'Token '+authToken,
+          'Authorization': 'Token ' + authToken,
       }
     })
     .then(response => {
