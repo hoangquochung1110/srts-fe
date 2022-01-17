@@ -37,7 +37,7 @@ const AuthStatus = () => {
   async function fetchData() {
     const authToken = localStorage.getItem('authToken');
     fetch(
-      process.env.REACT_APP_BACKEND_URL+'rest-auth/user/', {
+      process.env.REACT_APP_BACKEND_URL+'dj-rest-auth/user/', {
       headers: {
           'Authorization': 'Token '+authToken,
       }

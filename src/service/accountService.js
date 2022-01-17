@@ -21,7 +21,7 @@ function logout(){
 async function apiAuthenticate(accessToken){
     const data = {'access_token': accessToken};
     const response = await fetch(
-                                process.env.REACT_APP_BACKEND_URL+'rest-auth/facebook/', 
+                                process.env.REACT_APP_BACKEND_URL+'dj-rest-auth/facebook/', 
                                 
                                 {   
                                     headers: {
