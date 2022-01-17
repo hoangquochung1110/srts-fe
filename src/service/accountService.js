@@ -23,7 +23,7 @@ async function apiAuthenticate(accessToken){
     const data = {'access_token': accessToken};
     try{
         const response = await fetch(
-            process.env.REACT_APP_BACKEND_URL+'rest-auth/facebook/', 
+            process.env.REACT_APP_BACKEND_URL+'dj-rest-auth/facebook/', 
             {   
                 headers: {
                     'Accept': 'application/json',
@@ -33,7 +33,6 @@ async function apiAuthenticate(accessToken){
                 body: JSON.stringify(data)
             });
         const jsonRes = await response.json();
-        console.log(jsonRes);
         localStorage.setItem('authToken', jsonRes.key);
     } catch(err){
         console.log(err);
