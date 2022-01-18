@@ -7,10 +7,8 @@ const Login = () => {
     let location = useLocation();
 
     let from = location.state?.from?.pathname || "/";
-    console.log('location ', location);
     const clickHandler = () => {
         auth.logIn();
-        
         navigate(from, {replace: true});
     }
     return (
@@ -20,30 +18,5 @@ const Login = () => {
         
     )
 }
-
-// const Login  = () => {
-//     const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-//     const handleResponse = (data) => {
-//         // data['tokenDetail]['accessToken']
-//         console.log(data);
-//     }
-
-//     const handleError = (error) => {
-//         console.log(error);
-//     }
-
-//     return (
-//         <FacebookProvider appId="1432163750519185">  
-//             <LoginButton
-//                 scope="email"
-//                 onCompleted={handleResponse}
-//                 onError={handleError}
-//             >
-//             <span>Login via Facebook</span>
-//             </LoginButton>
-//         </FacebookProvider>
-//     )
-// }
 
 export default Login;
