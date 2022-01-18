@@ -12,8 +12,11 @@ function App() {
   const [memories, setMemories] = useState([]);
 
   useEffect(() => {
-    fetchUserData();
-    fetchMemories();
+    if (auth.user){
+      fetchUserData();
+      fetchMemories();
+    }
+
     return () => { 
       setUserData('');
       setMemories([]); 
@@ -30,7 +33,7 @@ function App() {
     })
     .then(response => {
       if(response.status === 200 || response.status === 201) return response.json();
-      else alert('Fail to log in with FB');
+      else console.log('Fail to log in with FB');
     })
     .then(JSONResponse => {
       setUserData(JSONResponse);
@@ -47,7 +50,7 @@ function App() {
     })
     .then(response => {
       if(response.status === 200) return response.json();
-      else alert('Fail to fetch data');
+      else console.log('Fail to fetch data');
     })
     .then(JSONResponse => setMemories(JSONResponse))
   }
