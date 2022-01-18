@@ -1,8 +1,11 @@
 import uniqid from "uniqid";
+import { useAuth } from "../../hooks/useAuth";
 import { MemoryCard } from "../memories";
 
 const Content = ({memories}) => {
-    if (!memories.length){
+    const auth = useAuth();
+
+    if (!memories.length || !auth.user){
         return <div>YOU HAVE NO MEMORIES</div>
     }else{
         return (
