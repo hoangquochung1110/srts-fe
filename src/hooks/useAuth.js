@@ -23,9 +23,11 @@ export const useProvideAuth = () => {
         window.FB.getLoginStatus(function(response) {
             if (response.status === 'connected') {
                 setUser('user');
+            }else{
+                setUser(null);
             }
         })
-    },[]);
+    },[user]);
 
     const logIn = () => {
         setUser('user');
