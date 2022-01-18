@@ -12,6 +12,10 @@ code {
     monospace;
 }
 
+* {
+  margin: 0;
+}
+
 #root{
   height: 100vh;
 }
@@ -35,9 +39,16 @@ a{
   text-decoration: none;
 }
 
-#navbar{
+.map-container{
   display: flex;
   flex-direction: row;
-  column-gap: 1rem;
-  list-style-type: none;
+}
+.map{
+  width: 70%;
+}
+
+.memory-form{
+
+  align-items: center;
+  width: 30%;
 }
