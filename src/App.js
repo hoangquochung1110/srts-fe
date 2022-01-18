@@ -12,10 +12,8 @@ function App() {
   const [memories, setMemories] = useState([]);
 
   useEffect(() => {
-    if (auth.user){
-      fetchUserData();
-      fetchMemories();
-    }
+    fetchUserData();
+    fetchMemories();
 
     return () => { 
       setUserData('');
@@ -50,7 +48,10 @@ function App() {
     })
     .then(response => {
       if(response.status === 200) return response.json();
-      else console.log('Fail to fetch data');
+      else {
+        console.log('Fail to fetch data');
+        return [];
+      }
     })
     .then(JSONResponse => setMemories(JSONResponse))
   }
@@ -59,10 +60,15 @@ function App() {
     auth.logOut();
     navigate("/");
   }
-
+  console.log('auth in App.js', auth.user);
   return (
     <>
-      <Header name={userData.first_name} onClick={clickHandler}/>
+      {auth.user ? 
+        <Header name={userData.first_name} onClick={clickHandler}/>
+        :
+        <Header name='Anonymous user'/>
+      }
+      
       <Content memories={memories}/>
     </>
   );
